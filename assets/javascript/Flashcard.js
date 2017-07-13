@@ -1,9 +1,11 @@
 var basic = require("./BasicCard.js");
-
 var cloze = require("./Clozecard.js");
 
-var washington = cloze("George Washington is the first president of us", "George Washington");
+function createCard(front, back, type){
+	if (type === "Basic"){
+		var tempCard = basic(front, back);
+		console.log(tempCard);
+	}
+}
 
-console.log(washington.partialText);
-console.log(washington.cloze);
-console.log(washington.fullText);
+

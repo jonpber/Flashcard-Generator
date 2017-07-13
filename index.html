@@ -3,14 +3,50 @@
 <head>
 	<title>Flashcard Generator</title>
 
-	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
-
-	  <link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+	<nav>
+		<div class="nav-wrapper">
+			<a href="#" class="brand-logo siteLogo">Flashcard Creator</a>
+			<a href="#" data-activates="mobile-demo" class="button-collapse right"><i class="material-icons">menu</i></a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+				<li><a href="">Create Cards</a></li>
+				<li><a href="">Card Quiz</a></li>
+			</ul>
+		</div>
+	</nav>
 
+	<div class="row valign-wrapper">
+		<div class="col s12">
+			<div class="card flashCard">
+				<div class="switch">
+					<label>
+						Basic Flashcard
+					<input type="checkbox">
+					<span class="lever"></span>
+						Cloze Flashcard
+					</label>
+				</div>
+				<div class="col s6 input-field">
+					<input type="text" id="front">
+					<label for="front">Front Text</label>
+				</div>
+				<div class="col s6 input-field">
+					<input type="text" id="back">
+					<label for="back">Back Text</label>
+				</div>
 
+				<input type="submit" name="submitBtn" class="submitBtn">
+			</div>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
-	<script src="assets/javascript/Flashcard.js"></script>
+	<script src="assets/javascript/app.js"></script>
 </body>
 </html>
