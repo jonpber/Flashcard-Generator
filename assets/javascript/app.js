@@ -9,6 +9,10 @@ $(function(){
 	};
 	firebase.initializeApp(config);
 
+	database = firebase.database();
+
+	var cardCreationMode = "Basic";
+
 	function BasicCard(front, back){
 		if(this instanceof BasicCard) {
 			this.front = front;
@@ -24,9 +28,6 @@ $(function(){
 			this.cloze = cloze;
 			this.partialText = text.replace(cloze, "...");
 			this.fullText = text;
-			if (!text.includes(cloze)){
-				console.log("The Cloze does not appear to be included in the text. It will not work as intended.");
-			} 
 		} 
 		else {
 			return new ClozeCard(text, cloze);
@@ -44,9 +45,40 @@ $(function(){
 	}
 
 	$(".submitBtn").on("click", function(){
-		console.log(createCard("Basic", $("#front").val(), $("#back").val()));
+		if(cardCreationMode === "Basic"){
+			database.ref("Cards").push(createCard("Basic", $("#front").val(), $("#back").val()));
+		}
+
+		else {
+			database.ref("Cards").push(createCard("Cloze", $("#fullText").val(), $("#clozeText").val()));
+		}
 	})
 
-	var testCard = createCard("Basic", "First Prez", "George Washington");
-	console.log(testCard);
+	$(".lever").on("click", function(){
+		if(cardCreationMode === "Basic"){
+			cardCreationMode = "Cloze";
+			$(".ClozeCreator").css("display", "block");
+			$(".BasicCreator").css("display", "none");
+			var fadeBG = $("<div>");
+			fadeBG.attr("Id", "bg2").addClass("bg").css("background-color", "rgb(78, 33, 33)").hide()
+			.appendTo(".bgPool").fadeIn(function(){
+				$("#bg1").css("background-color", "rgb(78, 33, 33)");
+				$("#bg2").remove();
+			});
+		}
+
+		else {
+			cardCreationMode = "Basic";
+			$(".ClozeCreator").css("display", "none");
+			$(".BasicCreator").css("display", "block");
+			var fadeBG = $("<div>");
+			fadeBG.attr("Id", "bg2").addClass("bg").css("background-color", "#161e26").hide()
+			.appendTo(".bgPool").fadeIn(function(){
+				$("#bg1").css("background-color", "#161e26");
+				$("#bg2").remove();
+			});
+		}
+		
+	})
+
 })
