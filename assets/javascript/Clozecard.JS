@@ -6,7 +6,7 @@ function ClozeCard(text, cloze){
 		this.partialText = text.replace(cloze, "...");
 		this.fullText = text;
 		if (!text.includes(cloze)){
-			return console.log("The Cloze does not appear to be included in the text. It will not work as intended.");
+			console.log("The Cloze does not appear to be included in the text. It will not work as intended.");
 		} 
 	} 
 	else {
