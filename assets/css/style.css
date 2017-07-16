@@ -3,7 +3,6 @@ html {
 }
 
 body {
-	background: #8e9ab9;
 	height: 100%;
 }
 
@@ -11,13 +10,15 @@ body {
 	padding: 0 20px;
 }
 
-.flashCard {
+.flashCard, .quizCard {
 	border-radius: 10px;
 	margin: auto;
 	background: white;
 	text-align: center;
 	width: 700px;
 	height: 450px;
+	padding: 55px;
+	box-shadow: 8px 7px 18px 0px rgba(0, 0, 0, 0.23);
 }
 
 .row {
@@ -28,3 +29,66 @@ body {
 	width: 500px;
 	background: red;
 }
+
+.ClozeCreator, .quizCard, .quizSpace {
+	display: none;
+}
+
+.bg {
+	background-repeat: no-repeat; 
+	background-attachment: fixed;
+	background-position: center 0px;
+	background-size: cover;
+	background-image: url("../images/intro.jpg");
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	top: 0;
+}
+
+#bg1 {
+	background-color: #161e26;
+}
+
+nav {
+	background: #8a383b;
+}
+
+h2 {
+	font-family: 'Pacifico', cursive;
+}
+
+nav .brand-logo {
+	font-family: 'Passion One', cursive;
+	font-size: 50px;
+	letter-spacing: 1.5px;
+}
+
+.preQuiz {
+	height: 60%;
+}
+
+.startQuizButton, input[type="submit"]{
+	margin: auto;
+	padding: 10px;
+	border-radius: 10px;
+	background: #8a383b;
+	color: white;
+	border: 0;
+	box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.5)
+}
+
+.switch label input[type=checkbox]:checked+.lever {
+	background-color: #8a383b;
+}
+
+.switch label input[type=checkbox]:checked+.lever:after {
+    background-color: #af6568;
+}
+
+.createNav, .quizNav {
+	font-family: 'Libre Franklin', sans-serif;
+}
+
+

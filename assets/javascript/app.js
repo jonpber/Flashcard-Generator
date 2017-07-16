@@ -13,6 +13,16 @@ $(function(){
 
 	var cardCreationMode = "Basic";
 
+	var cardQuiz = [];
+
+	var answer;
+
+	var questionCount = 0;
+
+	database.ref("Cards").on("child_added", function(snapshot){
+		cardQuiz.push(snapshot.val());
+	});
+
 	function BasicCard(front, back){
 		if(this instanceof BasicCard) {
 			this.front = front;
@@ -79,6 +89,70 @@ $(function(){
 			});
 		}
 		
+	});
+
+	$(".quizNav").on("click", function(){
+		$(".flashCard").hide("drop", {direction: "left"}, 200, function(){
+			$(".quizCard").show("slide", {direction: "right"});
+		});
+		
+		var fadeBG = $("<div>");
+		fadeBG.attr("Id", "bg2").addClass("bg").css("background-color", "rgb(25, 49, 39)").hide()
+			.appendTo(".bgPool").fadeIn();
 	})
+
+	$(".createNav").on("click", function(){
+		$(".quizCard").hide("slide", {direction: "right"}, 200, function(){
+			$(".flashCard").show("slide", {direction: "left"}, function(){
+				resetQuiz();
+			});
+		});
+		$("#bg2").fadeOut(function(){
+			$("#bg2").remove();
+		});
+	})
+
+	$(".startQuizButton").on("click", function(){
+		shuffleCards();
+		$(".quizSpace").css("display", "block");
+		$(".preQuiz").css("display", "none");
+
+		console.log(cardQuiz);
+		
+		if (questionCount < 2){
+			if (cardQuiz[questionCount].hasOwnProperty("back")){
+				$(".quizText").text(cardQuiz[questionCount].front);
+				answer = cardQuiz[questionCount].back;
+			}
+
+			else {
+				$(".quizText").text(cardQuiz[questionCount].partialText);
+				answer = cardQuiz[questionCount].cloze;
+			}
+		}
+	})
+
+	function shuffleCards(){
+		var currentIndex = cardQuiz.length; 
+		var tempValue; 
+		var randomIndex;
+
+		while (currentIndex !== 0){
+			randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex -= 1;
+
+			tempValue = cardQuiz[currentIndex];
+			cardQuiz[currentIndex] = cardQuiz[randomIndex];
+
+			cardQuiz[randomIndex] = tempValue;
+		}
+	}
+
+	function resetQuiz(){
+		$(".quizSpace").css("display", "none");
+		$(".preQuiz").css("display", "block");
+		$(".quizText").text("Quiz");
+		questionCount = 0;
+	}
 
 })

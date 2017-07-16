@@ -1,0 +1,23 @@
+{
+  "name": "Flashcard-Generator",
+  "version": "1.0.0",
+  "description": "An API for users to create and use Flashcards.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonpber/Flashcard-Generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonpber/Flashcard-Generator/issues"
+  },
+  "homepage": "https://github.com/jonpber/Flashcard-Generator#readme",
+  "dependencies": {
+    "inquirer": "^3.2.0"
+  }
+}

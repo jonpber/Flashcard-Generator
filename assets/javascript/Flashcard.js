@@ -107,7 +107,7 @@ function quiz(){
 			console.log("Sorry! " + answer + " was the correct answer!\r\n");
 		}
 
-		if (quizCounter < 2){
+		if (quizCounter < 4){
 			quizCounter += 1;
 			quiz();
 		}
