@@ -116,9 +116,12 @@ $(function(){
 		shuffleCards();
 		$(".quizSpace").css("display", "block");
 		$(".preQuiz").css("display", "none");
-
-		console.log(cardQuiz);
 		
+		quizRound();
+		
+	});
+
+	function quizRound(){
 		if (questionCount < 2){
 			if (cardQuiz[questionCount].hasOwnProperty("back")){
 				$(".quizText").text(cardQuiz[questionCount].front);
@@ -130,7 +133,11 @@ $(function(){
 				answer = cardQuiz[questionCount].cloze;
 			}
 		}
-	})
+
+		else {
+			resetQuiz();
+		}
+	}
 
 	function shuffleCards(){
 		var currentIndex = cardQuiz.length; 
@@ -154,5 +161,21 @@ $(function(){
 		$(".quizText").text("Quiz");
 		questionCount = 0;
 	}
+
+	$(".quizSubmitBtn").on("click", function(){
+		if ($("#quizAnswer").val() === answer){
+			$(".quizText").text("Correct!");
+		}
+
+		else {
+			$(".quizText").text("Sorry, the correct answer was " + answer);
+		}
+
+		questionCount += 1;
+
+		setTimeout(function(){
+			quizRound();
+		}, 3500);
+	});
 
 })
