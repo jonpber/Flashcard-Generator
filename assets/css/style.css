@@ -79,6 +79,10 @@ nav .brand-logo {
 	box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.5)
 }
 
+.startQuizButton {
+	margin: 75px auto;
+}
+
 .switch label input[type=checkbox]:checked+.lever {
 	background-color: #a4a4a4;
 }

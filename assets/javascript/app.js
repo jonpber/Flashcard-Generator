@@ -171,9 +171,13 @@ $(function(){
 			$(".quizText").text("Sorry, the correct answer was " + answer);
 		}
 
+		$(".answerSlot").css("display", "none");
+
 		questionCount += 1;
 
 		setTimeout(function(){
+			$("#quizAnswer").val("");
+			$(".answerSlot").css("display", "block");
 			quizRound();
 		}, 3500);
 	});

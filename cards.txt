@@ -4,3 +4,4 @@
 {"cloze":"Washington","partialText":"George ...  was the first President of US","fullText":"George Washington  was the first President of US"}
 {"cloze":"Dogs","partialText":"Reservoir ... is a film by Quentin Tarantino.","fullText":"Reservoir Dogs is a film by Quentin Tarantino."}
 {"front":"Smells Like Teen Spirit Band","back":"Nirvana"}
+{"front":"Who created Star Wars?","back":"George Lucas"}
